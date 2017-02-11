@@ -10,18 +10,16 @@ SynthDrumPlayer::SynthDrumPlayer(Inputs* inputs)
   ModuleKitSelect *kit_select = new ModuleKitSelect();
   ModuleMixer3 *mixer = new ModuleMixer3();
   ModuleWaveFolder *wave_folder = new ModuleWaveFolder();
-  ModuleExtClock *ext_clock = new ModuleExtClock(120, EIGHTH_NOTE_CLOCK_DIVISION);
   ModuleExtClockReset *seq_reset = new ModuleExtClockReset();
 
   // Use the external clock when available, otherwise
   // default to the internal 120BPM clock
-  ext_clock->clock_input = inputs->gate;
   seq_reset->clock_input = inputs->gate;
 
-  drum_sequencer->clock_input = ext_clock;
+  drum_sequencer->clock_input = inputs->gate;
   drum_sequencer->reset_input = seq_reset;
 
-  // Use the 3 parameters to select the patterns 
+  // Use the 3 parameters to select the patterns
   // used for the drums.
   drum_sequencer->kick_pattern_input = inputs->param1->smooth;
   drum_sequencer->snare_pattern_input = inputs->param2->smooth;
