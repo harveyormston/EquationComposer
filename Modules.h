@@ -21,6 +21,7 @@
 #include "ModuleEquationLooper.h"
 #include "ModuleEquationPlayer.h"
 #include "ModuleExtClock.h"
+#include "ModuleExtClockReset.h"
 #include "ModuleFreeze.h"
 #include "ModuleKitSelect.h"
 #include "ModuleLFO.h"
