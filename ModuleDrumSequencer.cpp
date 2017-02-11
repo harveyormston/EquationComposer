@@ -9,6 +9,7 @@ ModuleDrumSequencer::ModuleDrumSequencer()
   
   // Initialize all inputs
   this->clock_input = NULL;
+  this->reset_input = NULL;
   this->kick_pattern_input = NULL;  
   this->snare_pattern_input = NULL;  
   this->hihat_pattern_input = NULL;  
@@ -22,6 +23,12 @@ ModuleDrumSequencer::ModuleDrumSequencer()
 uint16_t ModuleDrumSequencer::compute()
 {
   uint32_t clock = this->readInput(clock_input);
+  uint32_t reset = this->readInput(reset_input);
+
+  if(reset > 0)
+  {
+	  step = 0;
+  }
 
   if((clock < MID_CV) && clocked)
   {

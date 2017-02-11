@@ -82,6 +82,7 @@ class ModuleDrumSequencer : public Module
     
     // Inputs
     Module *clock_input;
+    Module *reset_input;
     Module *kick_pattern_input;
     Module *snare_pattern_input;
     Module *hihat_pattern_input;
