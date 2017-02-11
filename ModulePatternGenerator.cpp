@@ -36,10 +36,7 @@ uint16_t ModulePatternGenerator::compute()
 	uint32_t clock = this->readInput(clock_input);
 	uint32_t reset = this->readInput(reset_input);
 
-	if(reset > 0)
-	{
-		step = 0;
-	}
+	if(reset > 0) step = 0;
 
 	// The trick to understanding this code is that the random number generators
 	// cv_rand and gate_rand aren't really random.  Given the same seed, they'll 

@@ -20,10 +20,7 @@ uint16_t ModuleArpeggio::compute()
   uint32_t clock = this->readInput(clock_input);
   uint32_t reset = this->readInput(reset_input);
   
-  if(reset > 0)
-  {
-	  step = 0;
-  }
+  if(reset > 0) step = 0;
 
   if((clock < MID_CV) && clocked) clocked = false;
   
