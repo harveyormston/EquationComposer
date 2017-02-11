@@ -2,7 +2,7 @@
 #include "ModuleExtClockReset.h"
 #include "defines.h"
 
-ModuleExtClock::ModuleExtClockReset()
+ModuleExtClockReset::ModuleExtClockReset()
 {
 
   // 'ext_clocked' records the status (on or off) of the external clock input
