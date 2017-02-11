@@ -12,8 +12,6 @@ SynthDrumPlayer::SynthDrumPlayer(Inputs* inputs)
   ModuleWaveFolder *wave_folder = new ModuleWaveFolder();
   ModuleExtClockReset *seq_reset = new ModuleExtClockReset();
 
-  // Use the external clock when available, otherwise
-  // default to the internal 120BPM clock
   seq_reset->clock_input = inputs->gate;
 
   drum_sequencer->clock_input = inputs->gate;

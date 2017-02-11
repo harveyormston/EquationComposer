@@ -12,6 +12,7 @@ ModulePatternGenerator::ModulePatternGenerator()
 
 	// Initialize all inputs
 	this->clock_input = NULL;
+	this->reset_input = NULL;
 	this->cv_pattern_input = NULL;
 	this->gate_pattern_input = NULL;
 	this->gate_density_input = NULL;  
@@ -33,6 +34,12 @@ uint16_t ModulePatternGenerator::compute()
 	uint32_t gate_pattern = this->readInput(this->gate_pattern_input, CONVERT_TO_9_BIT);
 	uint32_t gate_density = this->readInput(this->gate_density_input);
 	uint32_t clock = this->readInput(clock_input);
+	uint32_t reset = this->readInput(reset_input);
+
+	if(reset > 0)
+	{
+		step = 0;
+	}
 
 	// The trick to understanding this code is that the random number generators
 	// cv_rand and gate_rand aren't really random.  Given the same seed, they'll 

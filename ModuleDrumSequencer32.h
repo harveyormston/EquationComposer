@@ -3,6 +3,7 @@
  *  | ModuleDrumSequencer32  |
  *  |------------------------|
  *  > clock_input            |
+ *  > reset_input            |
  *  |                        |
  *  > kick_pattern_input     |
  *  > snare_pattern_input    |
@@ -39,6 +40,7 @@ class ModuleDrumSequencer32 : public Module
     
     // Inputs
     Module *clock_input;
+    Module *reset_input;
     Module *kick_pattern_input;
     Module *snare_pattern_input;
     Module *hihat_pattern_input;

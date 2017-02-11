@@ -7,15 +7,12 @@ SynthArpeggio1::SynthArpeggio1(Inputs* inputs)
   ModuleWavetableOsc *osc = new ModuleWavetableOsc();
   ModuleVCA *vca = new ModuleVCA();
   ModuleArpeggio *arpeggio = new ModuleArpeggio();
-  ModuleExtClock *ext_clock = new ModuleExtClock(120, EIGHTH_NOTE_CLOCK_DIVISION);
+  ModuleExtClockReset *seq_reset = new ModuleExtClockReset();
   ModuleENV *env = new ModuleENV();
   ModuleDelay *delay = new ModuleDelay();
   
-  // The ext_clock input will use the gate input if there is
-  // one, otherwise default to an internal 120 BPM clock.
-  ext_clock->clock_input = inputs->gate;
-
-  arpeggio->clock_input = ext_clock;
+  arpeggio->clock_input = inputs->gate;
+  arpeggio->reset_input = seq_reset;
   arpeggio->root_note_input = inputs->sr;
   arpeggio->pattern_input = inputs->param1;
 
@@ -24,7 +21,7 @@ SynthArpeggio1::SynthArpeggio1(Inputs* inputs)
   osc->wavetable_input = inputs->mod; 
   
   // Envelope for VCA
-  env->trigger_input = ext_clock;
+  env->trigger_input = inputs->gate;
   env->frequency_input = inputs->param2;
   env->slope_input = new ModuleConstant(2);
 

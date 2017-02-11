@@ -6,20 +6,19 @@ SynthPatterns::SynthPatterns(Inputs* inputs)
 	ModuleQuantizer *quantizer = new ModuleQuantizer();	
 	ModuleWavetableOsc *wavetable_osc = new ModuleWavetableOsc();
 	ModulePatternGenerator *pattern_generator = new ModulePatternGenerator();
-	ModuleExtClock *ext_clock = new ModuleExtClock(120, EIGHTH_NOTE_CLOCK_DIVISION);
+	ModuleExtClockReset *seq_reset = new ModuleExtClockReset();
   	ModuleLowpassFilter *lowpass_filter = new ModuleLowpassFilter();
 	ModuleENV *envelope_generator = new ModuleENV();
 	ModuleSampleAndHold *sample_and_hold = new ModuleSampleAndHold();
 
-	// The ext_clock input will use the gate input if there is
-	// one, otherwise default to an internal 120 BPM clock.
-	ext_clock->clock_input = inputs->gate;
+	seq_reset->clock_input = inputs->gate;
 
 	// Control the pattern generator from the param inputs
 	pattern_generator->cv_pattern_input = inputs->param1->smooth;
 	pattern_generator->gate_pattern_input = inputs->param2->smooth;
 	pattern_generator->gate_density_input = inputs->param3->smooth;
-	pattern_generator->clock_input = ext_clock;
+	pattern_generator->clock_input = inputs->gate;
+	pattern_generator->reset_input = seq_reset;
 	pattern_generator->length_input = new ModuleConstant(16);
 
 	// Sample + Hold the pattern generator CV output with

@@ -12,12 +12,19 @@ ModuleArpeggio::ModuleArpeggio()
   this->root_note_input = NULL;
   this->pattern_input = NULL;
   this->clock_input = NULL;
+  this->reset_input = NULL;
 }
 
 uint16_t ModuleArpeggio::compute()
 {
   uint32_t clock = this->readInput(clock_input);
+  uint32_t reset = this->readInput(reset_input);
   
+  if(reset > 0)
+  {
+	  step = 0;
+  }
+
   if((clock < MID_CV) && clocked) clocked = false;
   
   if((clock >= MID_CV) && !clocked) 

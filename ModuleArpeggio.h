@@ -5,6 +5,7 @@
 * > root_note            |
 * > pattern              |
 * > clock                |
+* > reset                |
 * |                      |
 * |               output >
 * +----------------------+
@@ -49,6 +50,7 @@ class ModuleArpeggio : public Module
     Module *root_note_input;
     Module *pattern_input;
     Module *clock_input;
+    Module *reset_input;
 
   private:
   

@@ -3,6 +3,7 @@
  *  | ModuleDrumSequencer  |
  *  |----------------------|
  *  > clock_input          |
+ *  > reset_input          |
  *  |                      |
  *  > kick_pattern_input   |
  *  > snare_pattern_input  |
@@ -94,6 +95,7 @@ class ModuleDrumSequencer : public Module
 
   private:
     uint8_t step;
+    boolean clocked;
 
     // 3 banks, 8 patterns per bank
     uint16_t patterns[3][8] =
@@ -133,7 +135,6 @@ class ModuleDrumSequencer : public Module
         }
     };
 
-    boolean clocked;
 };
 
 #endif

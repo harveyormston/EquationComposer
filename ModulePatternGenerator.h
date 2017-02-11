@@ -3,6 +3,7 @@
  *   | ModulePatternGenerator  |
  *   |-------------------------|
  *   > clock_input             |
+ *   > reset_input             |
  *   > cv_pattern_input        |
  *   > gate_pattern_input      |
  *   > gate_density_input      | 
@@ -78,6 +79,7 @@ class ModulePatternGenerator : public Module
     
     // Inputs
     Module *clock_input;
+    Module *reset_input;
     Module *cv_pattern_input;
     Module *gate_pattern_input;
     Module *gate_density_input;    
