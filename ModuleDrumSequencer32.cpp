@@ -25,7 +25,7 @@ uint16_t ModuleDrumSequencer32::compute()
   uint32_t clock = this->readInput(clock_input);
   uint32_t reset = this->readInput(reset_input);
 
-  if(reset > 0) step = 32;
+  if(reset > 0) step = 31;
 
   if((clock < MID_CV) && clocked)
   {
