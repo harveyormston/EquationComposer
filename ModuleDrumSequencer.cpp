@@ -48,7 +48,7 @@ uint16_t ModuleDrumSequencer::compute()
     hihat_output->value = bitRead(patterns[2][hihat_pattern], step) * MAX_CV;
     
     step++;
-    if(step == 16) step = 0;
+    if(step >= 16) step = 0;
   }
 
   return(kick_output->value);

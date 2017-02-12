@@ -38,7 +38,7 @@ uint16_t ModuleArpeggio::compute()
     my_output = (arpeggiations[pattern][step] * 4096/60) + root_note;
     
     step++;
-    if(step == 8) step = 0;
+    if(step >= 8) step = 0;
   }
   
   return(my_output);
